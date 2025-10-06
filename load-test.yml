@@ -1,0 +1,9 @@
+config:
+  target: "https://dog.ceo/api"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+scenarios:
+  - flow:
+      - get:
+          url: "/breeds/image/random"
