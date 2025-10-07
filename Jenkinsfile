@@ -57,12 +57,10 @@ pipeline {
         }
     }
 
-    post {
-        always {
-                   steps {
-            echo 'Cleaning up workspace...'
-            cleanWs()
-            }
-        }
+   post {
+    always {
+        echo 'Cleaning up workspace...'
+        cleanWs()
     }
+}
 }
