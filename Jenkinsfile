@@ -11,7 +11,11 @@ pipeline {
                     userRemoteConfigs: [[
                         url: 'https://github.com/malkiatTestingxperts/performance_testing.git'
                     ]],
-                    extensions: [[$class: 'CheckoutOption', timeout: 30]]
+                     extensions: [
+                [$class: 'CheckoutOption', timeout: 30],
+                [$class: 'CleanBeforeCheckout'],
+                [$class: 'CloneOption', depth: 1, shallow: true]
+            ]
                 ])
             }
         }
