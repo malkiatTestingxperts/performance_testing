@@ -27,7 +27,7 @@ pipeline {
 
     stage('Run Artillery Test') {
       steps {
-        bat 'npx artillery run load-test.yml -o report.json'
+        bat 'npx artillery run load-test.yml --record --key a9_q4g7gmk9hbvacn1juvje9b2d3yekjhw6 -o report.json'
       }
     }
 
