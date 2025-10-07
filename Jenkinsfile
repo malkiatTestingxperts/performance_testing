@@ -6,19 +6,19 @@ pipeline {
   }
 
   stages {
-    stage('Checkout Code') {
-      steps {
-        cleanWs() // 🧹 Clean old files before pulling new code
-        // Custom checkout with 30-min timeout
-        checkout([$class: 'GitSCM',
-          branches: [[name: '*/main']],
-          userRemoteConfigs: [[
-            url: 'https://github.com/malkiatTestingxperts/performance_testing.git'
-          ]],
-          extensions: [[$class: 'CheckoutOption', timeout: 30]]
-        ])
-      }
-    }
+    // stage('Checkout Code') {
+    //   steps {
+    //     cleanWs() // Clean old files before pulling new code
+    //     // Custom checkout with 30-min timeout
+    //     checkout([$class: 'GitSCM',
+    //       branches: [[name: '*/main']],
+    //       userRemoteConfigs: [[
+    //         url: 'https://github.com/malkiatTestingxperts/performance_testing.git'
+    //       ]],
+    //       extensions: [[$class: 'CheckoutOption', timeout: 30]]
+    //     ])
+    //   }
+    // }
 
     stage('Install Dependencies') {
       steps {
