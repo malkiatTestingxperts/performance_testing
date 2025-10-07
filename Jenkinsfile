@@ -1,9 +1,9 @@
 pipeline {
   agent any
 
-  tools {
-    nodejs "Node22" // NodeJS must be configured in Jenkins
-  }
+  // tools {
+  //   nodejs "Node22" // NodeJS must be configured in Jenkins
+  // }
 
   stages {
     // stage('Checkout Code') {
