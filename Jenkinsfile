@@ -3,27 +3,26 @@ pipeline {
 
     stages {
       
-      stage('Prepare Git') {
+     stage('Checkout Code') {
     steps {
         bat 'git config --system core.longpaths true'
-    }
-          }
-        stage('Checkout Code') {
-            steps {
-                cleanWs() // Clean workspace before checkout
-                checkout([$class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/malkiatTestingxperts/performance_testing.git'
-                    ]],
-                     extensions: [
-                [$class: 'CheckoutOption', timeout: 30],
-                [$class: 'CleanBeforeCheckout'],
-                [$class: 'CloneOption', depth: 1, shallow: true]
-            ]
-                ])
-            }
+        deleteDir()
+        retry(2) {
+            checkout([$class: 'GitSCM',
+                branches: [[name: '*/main']],
+                userRemoteConfigs: [[
+                    url: 'https://github.com/malkiatTestingxperts/performance_testing.git'
+                ]],
+                extensions: [
+                    [$class: 'CheckoutOption', timeout: 60],
+                    [$class: 'CleanBeforeCheckout'],
+                    [$class: 'CloneOption', depth: 1, shallow: true]
+                ]
+            ])
         }
+    }
+}
+
       
         stage('Install Dependencies') {
             steps {
